@@ -44,7 +44,7 @@ async function renderCenteredThumbnail(pdfData: Uint8Array) {
     viewport: renderViewport,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
     canvas: pageCanvas as never,
-  } as never).promise;
+  }).promise;
 
   const outputCanvas = createCanvas(TARGET_WIDTH, TARGET_HEIGHT);
   const outputCtx = outputCanvas.getContext('2d');
