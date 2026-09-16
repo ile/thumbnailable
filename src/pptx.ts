@@ -6,7 +6,7 @@ import { createCanvas } from '@napi-rs/canvas';
 import PptxParser from 'node-pptx-parser';
 import { handleInput, renderToBuffer, bufferToArrayBuffer, ThumbnailError } from './utils';
 
-const TARGET_WIDTH = 640;
+const TARGET_WIDTH = 300;
 const TARGET_HEIGHT = 360;
 const FONT_SIZE = 14;
 const LINE_HEIGHT = 20;

@@ -7,7 +7,7 @@ import {
   validateFilePath,
 } from './utils';
 
-const TARGET_WIDTH = 640;
+const TARGET_WIDTH = 300;
 const TARGET_HEIGHT = 360;
 
 async function handleImageInput(source: string | ArrayBuffer) {
@@ -57,10 +57,7 @@ export async function getImageThumbnail(source: string | ArrayBuffer) {
     const buffer = await handleImageInput(source);
 
     const thumbnailBuffer = await sharp(buffer)
-      .resize(TARGET_WIDTH, TARGET_HEIGHT, {
-        fit: 'inside',
-        withoutEnlargement: true,
-      })
+      .resize(TARGET_WIDTH)
       .webp({ quality: 80 })
       .toBuffer();
 

@@ -8,14 +8,39 @@ import {
   bufferToArrayBuffer,
   ThumbnailError,
 } from './utils';
+import { GlobalFonts } from '@napi-rs/canvas';
 
-const TARGET_WIDTH = 640;
+const TARGET_WIDTH = 300;
 const TARGET_HEIGHT = 360;
 const FONT_SIZE = 14;
 const LINE_HEIGHT = 18;
 const PADDING = 16;
 const MAX_CHARS = 2000;
 const MAX_LINES = 50;
+
+function resolveMonoFont(): string {
+  const preferred = [
+    'DejaVu Sans Mono',
+    'Liberation Mono',
+    'Noto Sans Mono',
+    'Consolas',
+    'Courier New',
+    'Menlo',
+    'Monaco',
+    'Ubuntu Mono',
+  ];
+
+  const available = new Set(
+    GlobalFonts.families.map((f) => f.family),
+  );
+
+  for (const name of preferred) {
+    if (available.has(name)) return name;
+  }
+
+  // viimeinen oljenkorsi: ensimmäinen saatavilla oleva fontti
+  return GlobalFonts.families[0]?.family ?? 'sans-serif';
+}
 
 function formatCsvLine(line: string) {
   return line.replace(/,/g, ' │ ');
@@ -73,7 +98,7 @@ async function renderTextThumbnail(content: string, mimeType?: string) {
   context.fillStyle = '#FFFFFF';
   context.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
   context.fillStyle = '#2d3748';
-  context.font = `${FONT_SIZE}px monospace`;
+  context.font = `${FONT_SIZE}px "${resolveMonoFont()}"`;
   context.textBaseline = 'alphabetic';
 
   let lines = content.split('\n').slice(0, MAX_LINES);

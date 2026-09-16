@@ -2,7 +2,7 @@ import { createCanvas } from '@napi-rs/canvas';
 import * as XLSX from 'xlsx';
 import { handleInput, renderToBuffer, bufferToArrayBuffer, ThumbnailError } from './utils';
 
-const TARGET_WIDTH = 640;
+const TARGET_WIDTH = 300;
 const TARGET_HEIGHT = 360;
 const FONT_SIZE = 12;
 const LINE_HEIGHT = 16;

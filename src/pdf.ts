@@ -2,7 +2,7 @@ import { createCanvas, Path2D } from '@napi-rs/canvas';
 import { getResolvedPDFJS } from 'unpdf';
 import { handleInput, bufferToArrayBuffer, ThumbnailError } from './utils';
 
-const TARGET_WIDTH = 640;
+const TARGET_WIDTH = 300;
 const TARGET_HEIGHT = 360;
 
 class NodeCanvasFactory {
