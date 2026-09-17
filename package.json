@@ -2,7 +2,7 @@
   "name": "thumbnailable-ile",
   "description": "Generate thumbnail images from documents and images",
   "type": "module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "format": "oxfmt && oxfmt --check",
     "lint": "oxlint --type-aware",
